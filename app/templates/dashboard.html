@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Trading Bot Dashboard</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Crypto Trading Bot Dashboard</h1>
+    <p>Portfolio Value: $<span id="portfolio-value">10000</span></p>
+
+    <script>
+        const socket = io();
+        socket.on('update', function(data) {
+            document.getElementById('portfolio-value').innerText = data.portfolio_value.toFixed(2);
+        });
+    </script>
+</body>
+</html>
